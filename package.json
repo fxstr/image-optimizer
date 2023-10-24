@@ -1,0 +1,19 @@
+{
+  "name": "image-optimizer",
+  "version": "1.0.0",
+  "description": "## Build Docker File",
+  "main": "src/index.mjs",
+  "scripts": {
+    "dev": "nodemon src/index.mjs",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
+  },
+  "author": "",
+  "dependencies": {
+    "sharp": "^0.32.6",
+    "nodemon": "^3.0.1"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
