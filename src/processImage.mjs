@@ -6,7 +6,9 @@ import getCrop from './getCrop.mjs';
  */
 const adjustFocalPoint = (value, unit, fullDimension) => {
   if (unit === '%') {
-    return (value / 100) * fullDimension;
+    // While both the percentage and the image width are integers, their multiplication may result
+    // in a float; Sharp needs integers to crop an image, so make sure we get one.
+    return Math.round((value / 100) * fullDimension);
   }
   return value;
 };

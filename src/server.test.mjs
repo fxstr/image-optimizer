@@ -57,7 +57,6 @@ test('works with valid arguments', (done) => {
 test('works with parameters', (done) => {
   const app = createServer();
   const chunks = [];
-  // Do not use a Promise here as the tes
   request(app)
     .get('/convert?source=http://0.0.0.0:3200/media/test.jpg&size=500/200&format=avif&focalpoint=200/10%')
     .expect(200)

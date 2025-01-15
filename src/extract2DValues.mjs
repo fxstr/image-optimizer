@@ -5,7 +5,10 @@ export default (values, parameterName, supportsRelativeValues = true) => {
   // Digits before / are optional, as /ddd is valid
   const match = values.match(/^(\d*)(%?)\/?(\d*)(%?)$/);
   if (!match) {
-    throw new Error(`GET parameter "${parameterName}" must be "ddd", "ddd/", "ddd/ddd" or "/ddd" (where ddd is a positive integer), is "${values}" instead.`);
+    const relativeValueErrorMessage = supportsRelativeValues
+      ? ' and may contain a trailing % for relative values'
+      : '';
+    throw new Error(`GET parameter "${parameterName}" must be "ddd", "ddd/", "ddd/ddd" or "/ddd" (where ddd is a positive integer)${relativeValueErrorMessage}. Parameter value is "${values}" instead.`);
   }
   const [, width, widthUnit, height, heightUnit] = match;
   if (!supportsRelativeValues && (widthUnit || heightUnit)) {
